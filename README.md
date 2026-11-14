@@ -2,6 +2,17 @@
 
 코딩을 몰라도 됩니다. **글자만 바꾸는 것**이 전부예요.
 
+## 기본 정보
+
+| 항목 | 내용 |
+|---|---|
+| 사이트 주소 | https://kusc-official.github.io |
+| GitHub Organization | `kusc-official` (https://github.com/kusc-official) |
+| 저장소 | https://github.com/kusc-official/kusc-official.github.io |
+| 배포 방식 | GitHub Pages (`main` 브랜치에 올리면 1~2분 뒤 사이트에 자동 반영) |
+
+임원진이 바뀌면 새 임원진을 Organization 멤버로 초대하고, 졸업한 임원진은 멤버에서 빼 주세요.
+
 ## 파일 구성
 
 | 파일 | 하는 일 | 고칠 일 |
@@ -97,8 +108,8 @@
 
 ## 링크 미리보기 (카톡·인스타 공유)
 
-`index.html` 맨 위의 `og:url`, `og:image` 두 줄에 있는 `[내용 입력: 사이트 주소]`를
-실제 사이트 주소(예: `https://아이디.github.io/KUSC-homepage`)로 바꿔야 미리보기 이미지가 뜹니다.
+`index.html` 맨 위의 `og:url`, `og:image` 두 줄에 사이트 주소(`https://kusc-official.github.io`)가 들어 있습니다.
+사이트 주소가 바뀌면 이 두 줄도 함께 바꿔야 미리보기 이미지가 뜹니다.
 
 - 카카오톡은 미리보기를 한동안 저장해 둡니다. 내용을 바꿨는데 예전 미리보기가 뜨면
   [카카오 공유 디버거](https://developers.kakao.com/tool/debugger/sharing)에서 주소를 넣고 "캐시 초기화"를 누르세요.
