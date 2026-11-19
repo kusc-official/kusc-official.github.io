@@ -24,10 +24,9 @@
 
   <link rel="icon" href="images/logo.png">
 
-  <!-- 글꼴: Noto Sans KR (구글 폰트) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+  <!-- 글꼴: Pretendard (무료 한글 웹폰트, jsDelivr에서 불러옴) -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 
   <link rel="stylesheet" href="style.css">
   <!-- 홈 화면/페이지 전환 기능이 켜졌다는 표시 (지우지 마세요) -->
@@ -79,17 +78,68 @@
       </div>
     </section>
 
+    <!-- ✏️ 홈 숫자 띠: 학기가 바뀌면 About의 '학회 구성' 숫자, 커리큘럼의 세션 횟수와 함께 바꿔 주세요. -->
+    <section class="home-stats">
+      <div class="container">
+        <ul>
+          <li><strong>40<small>명</small></strong><span>26-2학기 활동 인원</span></li>
+          <li><strong>39<small>명</small></strong><span>26-1학기 수료생</span></li>
+          <li><strong>9<small>회</small></strong><span>26-2학기 정기 세션</span></li>
+          <li><strong>2026</strong><span>설립</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ✏️ 대표 활동 카드: 모든 카드가 같은 순서(분야 태그 → 제목 → 한 줄 설명 → 숫자 → 숫자 설명)입니다.
+         글자만 바꾸고, 카드를 늘릴 때는 <a class="feature-card"> 묶음을 통째로 복사하세요. -->
+    <section class="section home-features">
+      <div class="container">
+        <p class="section-label">Highlights</p>
+        <h2>대표 활동</h2>
+        <div class="feature-grid">
+          <a class="feature-card" href="#case-study">
+            <span class="feature-tag">문제 해결 · 지도교수님 피드백</span>
+            <strong class="feature-title">케이스 스터디</strong>
+            <span class="feature-desc">실제 기업의 문제를 정의하고 가설을 검증해 전략 대안을 발표합니다.</span>
+            <span class="feature-metric">6<small>개 팀</small></span>
+            <span class="feature-note">26-2학기 산업군별 기업 분석 · 금융·AI·엔터·소비재·유통</span>
+            <span class="feature-go">케이스 스터디 보기 →</span>
+          </a>
+          <a class="feature-card" href="#project">
+            <span class="feature-tag">기업 실무진 평가</span>
+            <strong class="feature-title">산학협력 프로젝트</strong>
+            <span class="feature-desc">기업이 낸 실제 과제에 팀별 전략을 제안하고 실무진에게 평가받습니다.</span>
+            <span class="feature-metric">3<small>곳</small></span>
+            <span class="feature-note">2026 협력 기업 · KG제로인 · 국내 AI 기업 · 유가네닭갈비</span>
+            <span class="feature-go">산학협력 보기 →</span>
+          </a>
+          <a class="feature-card" href="#seminar">
+            <span class="feature-tag">경영대학 공동 주최</span>
+            <strong class="feature-title">전략직무 공개 세미나</strong>
+            <span class="feature-desc">IB·PE·VC·컨설팅·전략기획·PM 현직자가 진출 노하우를 직접 전합니다.</span>
+            <span class="feature-metric">6<small>개 직무</small></span>
+            <span class="feature-note">2026 Fall Seminar · 학과 무관 전교생 대상</span>
+            <span class="feature-go">강연 · 세미나 보기 →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
     <!-- ✏️ 홈 메뉴 카드: 누르면 각 페이지로 이동합니다. 제목·설명 글자만 바꾸세요. -->
     <section class="section home-menu">
       <div class="container">
+        <p class="section-label">Menu</p>
+        <h2>둘러보기</h2>
         <div class="menu-grid">
           <a class="menu-card" href="#about">
+            <span class="menu-num">01</span>
             <span class="menu-eng">About</span>
             <strong>학회 소개</strong>
             <span class="menu-desc">설립 목적, 비전, 활동 혜택과 학회 구성</span>
             <span class="menu-go">자세히 보기 →</span>
           </a>
           <div class="menu-card menu-card-wide">
+            <span class="menu-num">02</span>
             <a class="menu-main" href="#activities">
               <span class="menu-eng">Activities</span>
               <strong>활동 소개</strong>
@@ -103,12 +153,14 @@
             </span>
           </div>
           <a class="menu-card menu-card-wide" href="#qna">
+            <span class="menu-num">03</span>
             <span class="menu-eng">Q&amp;A</span>
             <strong>모집 안내 · 자주 묻는 질문</strong>
             <span class="menu-desc">다음 모집 일정, 학회비, 출석·수료 기준</span>
             <span class="menu-go">자세히 보기 →</span>
           </a>
           <a class="menu-card" href="#contact">
+            <span class="menu-num">04</span>
             <span class="menu-eng">Contact</span>
             <strong>문의 · 소식</strong>
             <span class="menu-desc">인스타그램 DM, 네이버 카페</span>
@@ -214,11 +266,8 @@
               <ul>
                 <li>학회 소개 및 한 학기 전체 커리큘럼·운영 방식 설명</li>
                 <li>학회칙 및 수료 기준 안내</li>
-                <li>커뮤니케이션 스킬 소개</li>
               </ul>
             </div>
-          </details>
-        </div>
           </details>
         </div>
 
