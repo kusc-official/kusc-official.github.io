@@ -23,7 +23,7 @@ body {
   margin: 0;
   background: var(--white);
   color: var(--text);
-  font-family: "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", "Noto Sans KR", sans-serif;
+  font-family: "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", "맑은 고딕", sans-serif;
   font-size: 16px;
   line-height: 1.7;
   word-break: keep-all;           /* 한글 단어 중간에서 줄이 끊기지 않게 */
@@ -31,6 +31,7 @@ body {
 }
 
 img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
 a { color: inherit; }
 h1, h2, h3 { line-height: 1.35; margin: 0; }
 p { margin: 0; }
@@ -41,8 +42,6 @@ p { margin: 0; }
   padding: 0 20px;
 }
 
-/* 메뉴를 눌렀을 때 고정 헤더에 제목이 가려지지 않게 */
-section[id] { scroll-margin-top: 80px; }
 
 /* ---------- 헤더 ---------- */
 .site-header {
@@ -97,6 +96,103 @@ section[id] { scroll-margin-top: 80px; }
   text-decoration: none;
 }
 .nav a:hover { background: var(--navy-soft); }
+.nav a.active { background: var(--navy); color: var(--white); }
+
+/* ---------- 페이지 공통 ---------- */
+/* 페이지가 짧아도 푸터가 화면 중간에 뜨지 않게 */
+.page:not(.page-home) { min-height: calc(100vh - 69px - 58px); }
+.section.page { padding-top: 40px; }
+
+.back-home {
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
+}
+.back-home:hover { color: var(--navy); }
+.section-navy .back-home { color: #b8c2e0; }
+.section-navy .back-home:hover { color: var(--white); }
+/* 자바스크립트가 꺼진 환경(전체 스크롤 보기)에서는 숨김 */
+html:not(.js) .back-home,
+html:not(.js) .cat-tabs,
+html:not(.js) .home-menu { display: none; }
+
+/* ---------- 홈 메뉴 카드 ---------- */
+.home-menu { padding: 56px 0 72px; background: var(--bg-soft); }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 26px 26px 22px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--white);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.15s, box-shadow 0.15s, transform 0.15s;
+}
+a.menu-card:hover, .menu-card-wide:hover {
+  border-color: var(--navy);
+  box-shadow: 0 6px 20px rgba(31, 42, 85, 0.10);
+  transform: translateY(-2px);
+}
+.menu-card-wide { grid-column: span 2; }   /* 가로로 두 칸 차지하는 카드 */
+.menu-main { display: flex; flex-direction: column; gap: 6px; text-decoration: none; }
+.menu-eng {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy);
+  opacity: 0.6;
+}
+.menu-card strong { font-size: 21px; font-weight: 800; color: var(--navy); line-height: 1.35; }
+.menu-desc { color: var(--muted); font-size: 15px; }
+.menu-go { margin-top: auto; padding-top: 14px; font-size: 14px; font-weight: 700; color: var(--navy); }
+.menu-subs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 14px;
+}
+.menu-subs a {
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: var(--navy-soft);
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.menu-subs a:hover { background: var(--navy); color: var(--white); }
+
+/* ---------- 활동 카테고리 탭 ---------- */
+.cat-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: -8px 0 24px;
+}
+.cat-tabs a {
+  padding: 7px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--white);
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+.cat-tabs a:hover { border-color: var(--navy); }
+.cat-tabs a.active { background: var(--navy); border-color: var(--navy); color: var(--white); }
 
 /* ---------- 첫 화면 배너 ---------- */
 .hero {
@@ -307,7 +403,7 @@ details > summary:hover { color: var(--navy); }
 
 .photos {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 320px));
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   gap: 12px;
   margin-top: 16px;
   align-items: start;
@@ -437,14 +533,22 @@ details > summary:hover { color: var(--navy); }
   .brand-logo { width: 96px; height: 40px; }
   .nav { justify-content: space-between; }
   .nav a { padding: 6px 8px; font-size: 14px; }
-  section[id] { scroll-margin-top: 110px; }
 
   .hero { padding: 52px 0 60px; }
   .section { padding: 56px 0; }
 
   .info-grid,
   .stats,
-  .contact-grid { grid-template-columns: 1fr; }
+  .contact-grid,
+  .menu-grid { grid-template-columns: 1fr; }
+  .menu-card-wide { grid-column: auto; }
+  .home-menu { padding: 32px 0 48px; }
+  .menu-card { padding: 22px 20px 18px; }
+  .menu-card strong { font-size: 19px; }
+  .cat-tabs { flex-wrap: nowrap; overflow-x: auto; margin-right: -20px; padding-right: 20px; }
+  .cat-tabs a { flex: none; }
+  .page:not(.page-home) { min-height: calc(100vh - 100px - 58px); }
+  .section.page { padding-top: 28px; }
 
   .category { padding: 20px 18px; }
   .photos { grid-template-columns: 1fr; }

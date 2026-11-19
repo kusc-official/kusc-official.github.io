@@ -23,14 +23,22 @@
   <meta name="twitter:card" content="summary">
 
   <link rel="icon" href="images/logo.png">
+
+  <!-- 글꼴: Noto Sans KR (구글 폰트) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+
   <link rel="stylesheet" href="style.css">
+  <!-- 홈 화면/페이지 전환 기능이 켜졌다는 표시 (지우지 마세요) -->
+  <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
 
   <!-- ===================== 헤더 (화면 맨 위) ===================== -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="#top" class="brand">
+      <a href="#home" class="brand">
         <img src="images/logo.png" alt="KUSC 로고" class="brand-logo">
         <span class="brand-text">
           <strong>KUSC</strong>
@@ -48,7 +56,16 @@
 
   <main id="top">
 
-    <!-- ===================== 첫 화면 (남색 배너) ===================== -->
+    <!-- =========================================================
+         📌 사이트 구조 안내
+         - 처음 들어오면 "홈"(남색 배너 + 메뉴 카드)만 보입니다.
+         - 카드나 위쪽 메뉴를 누르면 해당 페이지(About / Activities / Q&A / Contact)만 보입니다.
+         - 각 페이지는 아래의 <section id="..." class="page ..."> 묶음입니다.
+           글자만 바꾸면 되고, id 와 class 는 건드리지 마세요.
+         ========================================================= -->
+
+    <!-- ===================== 홈 (첫 화면) ===================== -->
+    <div id="page-home" class="page page-home">
     <section class="hero">
       <div class="container">
         <p class="hero-eyebrow">Konkuk Univ Strategy Consulting</p>
@@ -62,9 +79,50 @@
       </div>
     </section>
 
-    <!-- ===================== About ===================== -->
-    <section id="about" class="section">
+    <!-- ✏️ 홈 메뉴 카드: 누르면 각 페이지로 이동합니다. 제목·설명 글자만 바꾸세요. -->
+    <section class="section home-menu">
       <div class="container">
+        <div class="menu-grid">
+          <a class="menu-card" href="#about">
+            <span class="menu-eng">About</span>
+            <strong>학회 소개</strong>
+            <span class="menu-desc">설립 목적, 비전, 활동 혜택과 학회 구성</span>
+            <span class="menu-go">자세히 보기 →</span>
+          </a>
+          <div class="menu-card menu-card-wide">
+            <a class="menu-main" href="#activities">
+              <span class="menu-eng">Activities</span>
+              <strong>활동 소개</strong>
+              <span class="menu-desc">매주 수요일 정기 세션으로 진행하는 네 가지 활동</span>
+            </a>
+            <span class="menu-subs">
+              <a href="#curriculum">커리큘럼</a>
+              <a href="#case-study">케이스 스터디</a>
+              <a href="#project">산학협력 프로젝트</a>
+              <a href="#seminar">강연 세미나 · 행사</a>
+            </span>
+          </div>
+          <a class="menu-card menu-card-wide" href="#qna">
+            <span class="menu-eng">Q&amp;A</span>
+            <strong>모집 안내 · 자주 묻는 질문</strong>
+            <span class="menu-desc">다음 모집 일정, 학회비, 출석·수료 기준</span>
+            <span class="menu-go">자세히 보기 →</span>
+          </a>
+          <a class="menu-card" href="#contact">
+            <span class="menu-eng">Contact</span>
+            <strong>문의 · 소식</strong>
+            <span class="menu-desc">인스타그램 DM, 네이버 카페</span>
+            <span class="menu-go">자세히 보기 →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    </div>
+
+    <!-- ===================== About ===================== -->
+    <section id="page-about" class="section page">
+      <div class="container">
+        <a class="back-home" href="#home">← 홈으로</a>
         <p class="section-label">About</p>
         <h2>학회 소개</h2>
 
@@ -122,14 +180,24 @@
          📌 상태 표시: <span class="badge done">완료</span>
                        <span class="badge ongoing">진행 중</span>
                        <span class="badge upcoming">예정</span>  중 하나를 쓰면 됩니다. -->
-    <section id="activities" class="section section-soft">
+    <section id="page-activities" class="section section-soft page">
       <div class="container">
+        <a class="back-home" href="#home">← 홈으로</a>
         <p class="section-label">Activities</p>
         <h2>활동 소개</h2>
         <p class="section-desc">매주 수요일 정기 세션으로 진행합니다. 항목을 누르면 상세 내용이 펼쳐져요.</p>
 
+        <!-- 카테고리 탭 (누르면 해당 카테고리만 보여 줍니다) -->
+        <nav class="cat-tabs">
+          <a href="#activities">전체</a>
+          <a href="#curriculum">커리큘럼</a>
+          <a href="#case-study">케이스 스터디</a>
+          <a href="#project">산학협력 프로젝트</a>
+          <a href="#seminar">강연 세미나 · 행사</a>
+        </nav>
+
         <!-- ---------- 카테고리 1: 커리큘럼 ---------- -->
-        <div class="category">
+        <div class="category" id="cat-curriculum">
           <div class="category-head">
             <h3>커리큘럼</h3>
             <p>OT에서 학기 커리큘럼·운영 방식·수료 기준을 안내하고, 매주 수요일 정기 세션으로 진행합니다.</p>
@@ -166,7 +234,7 @@
         </div>
 
         <!-- ---------- 카테고리 2: 케이스 스터디 ---------- -->
-        <div class="category">
+        <div class="category" id="cat-case-study">
           <div class="category-head">
             <h3>케이스 스터디</h3>
             <p>가설 중심 문제해결 방법론을 배우고, 팀별로 기업을 분석·발표해 지도교수님의 피드백을 받습니다. 학기 말에는 케이스 스터디 대회로 우수 팀을 시상합니다.</p>
@@ -175,16 +243,26 @@
 
           <details class="item">
             <summary>
-              <span class="item-top"><span class="item-date">2026-2 · 11/18</span><span class="badge upcoming">예정</span></span>
-              <span class="item-title">케이스 스터디</span>
-              <span class="item-sum">산업군별 6개 팀의 기업 케이스 스터디 발표와 교수님 총평</span>
+              <span class="item-top"><span class="item-date">2026-2 · 11/18</span><span class="badge done">완료</span></span>
+              <span class="item-title">케이스 스터디 — 지도교수님과 함께한 산업군별 기업 분석 발표</span>
+              <span class="item-sum">산업군별 6개 팀의 기업 케이스 스터디 발표와 지도교수님 피드백·총평</span>
             </summary>
             <div class="item-detail">
               <ul>
                 <li>산학협력 프로젝트에 대비한 사전 케이스 스터디</li>
-                <li>학회원 선호 산업군을 바탕으로 6개 팀 구성, 팀별로 산업 내 기업 1곳을 선정해 분석</li>
-                <li>발표 후 교수님의 피드백 및 총평</li>
+                <li>학회원 선호 산업군을 바탕으로 금융·AI·엔터·소비재·유통(2개 팀)의 6개 팀을 구성하고, 팀별로 산업 내 기업 1곳을 선정해 분석</li>
+                <li>문제 정의 → 가설 설정 → Value Chain 등 분석 도구로 가설 검증 → 전략 대안과 단계별 실행 로드맵까지 제시</li>
+                <li>팀별 발표 후 지정된 두 팀이 질문하는 팀 간 상호 Q&amp;A</li>
+                <li>지도교수님의 팀별 피드백 및 총평</li>
               </ul>
+              <div class="photos">
+                <img src="images/2026-2-casestudy-1.jpg" alt="소비재 팀 Value Chain 분석 발표" loading="lazy">
+                <img src="images/2026-2-casestudy-3.jpg" alt="엔터 팀 플랫폼 통합 전략 발표" loading="lazy">
+                <img src="images/2026-2-casestudy-4.jpg" alt="유통 팀 가설 설정 발표" loading="lazy">
+                <img src="images/2026-2-casestudy-5.jpg" alt="유통 팀 구독 사업 진단 발표" loading="lazy">
+                <img src="images/2026-2-casestudy-2.jpg" alt="금융 팀 단계별 실행 로드맵 발표" loading="lazy">
+                <img src="images/2026-2-casestudy-6.jpg" alt="AI 팀 가설 검증 발표" loading="lazy">
+              </div>
             </div>
           </details>
 
@@ -233,7 +311,7 @@
         </div>
 
         <!-- ---------- 카테고리 3: 산학협력 프로젝트 ---------- -->
-        <div class="category">
+        <div class="category" id="cat-project">
           <div class="category-head">
             <h3>산학협력 프로젝트</h3>
             <p>기업이 낸 실제 과제에 팀별로 전략을 제안하고, 기업 실무진 앞에서 발표해 평가와 피드백을 받습니다.</p>
@@ -294,7 +372,7 @@
         </div>
 
         <!-- ---------- 카테고리 4: 강연 세미나 · 행사 ---------- -->
-        <div class="category">
+        <div class="category" id="cat-seminar">
           <div class="category-head">
             <h3>강연 세미나 · 행사</h3>
             <p>현직 컨설턴트 선배가 이어서 진행하는 교육세션(4회)과 선배 초빙강연을 듣고, 경영대학과 함께 전교생 대상 공개 세미나를 엽니다.</p>
@@ -400,8 +478,9 @@
 
     <!-- ===================== Q&A ===================== -->
     <!-- 📌 질문 하나 추가하는 법: <details class="qa"> 부터 </details> 까지를 복사해서 붙여넣고 글자만 바꾸세요. -->
-    <section id="qna" class="section">
+    <section id="page-qna" class="section page">
       <div class="container">
+        <a class="back-home" href="#home">← 홈으로</a>
         <p class="section-label">Q&amp;A</p>
         <h2>자주 묻는 질문</h2>
 
@@ -470,8 +549,9 @@
     </section>
 
     <!-- ===================== Contact ===================== -->
-    <section id="contact" class="section section-navy">
+    <section id="page-contact" class="section section-navy page">
       <div class="container">
+        <a class="back-home" href="#home">← 홈으로</a>
         <p class="section-label">Contact</p>
         <h2>문의 · 소식</h2>
         <p class="section-desc">문의는 인스타그램 DM 또는 네이버 카페로 남겨 주세요.</p>
@@ -497,6 +577,41 @@
       <p>© 2026 KUSC 건국대학교 전략경영학회</p>
     </div>
   </footer>
+
+  <!-- 페이지 전환 기능 (고칠 필요 없음)
+       주소 뒤 #about, #activities, #case-study 등에 맞는 페이지만 보여 줍니다. -->
+  <script>
+    (function () {
+      // 주소의 #이름 → 페이지: #about → id="page-about", 활동 카테고리: #case-study → id="cat-case-study"
+      var pages = document.querySelectorAll('.page');
+      var cats = document.querySelectorAll('.category');
+      var navLinks = document.querySelectorAll('.nav a, .cat-tabs a');
+
+      function show() {
+        var name = decodeURIComponent(location.hash.replace('#', '')) || 'home';
+        var target = document.getElementById('page-' + name) || document.getElementById('cat-' + name);
+        if (!target) { name = 'home'; target = document.getElementById('page-home'); }
+        var page = target.classList.contains('page') ? target : target.closest('.page');
+
+        pages.forEach(function (p) { p.hidden = (p !== page); });
+
+        // 활동 카테고리: 특정 카테고리를 골랐으면 그것만, 아니면 전부
+        var oneCat = target.classList.contains('category');
+        cats.forEach(function (c) { c.hidden = oneCat && c !== target; });
+
+        var pageName = page.id.replace('page-', '');
+        navLinks.forEach(function (a) {
+          var h = a.getAttribute('href').slice(1);
+          var inMainNav = a.parentNode.classList.contains('nav');
+          a.classList.toggle('active', inMainNav ? h === pageName : h === name);
+        });
+        window.scrollTo({ top: 0, behavior: 'instant' });
+      }
+
+      window.addEventListener('hashchange', show);
+      show();
+    })();
+  </script>
 
 </body>
 </html>
