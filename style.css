@@ -332,6 +332,20 @@ a.menu-card:hover, .menu-card-wide:hover {
   color: var(--navy) !important;
 }
 
+/* 학기별 진행 내용 (카테고리 설명 아래) */
+.semesters {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 16px 0 0;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.semesters > div { padding: 14px 18px; }
+.semesters > div + div { border-left: 1px solid var(--line); }
+.semesters dt { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+.semesters dd { margin: 0; font-size: 15px; color: var(--muted); }
+
 .partners {
   list-style: none;
   padding: 0;
@@ -551,6 +565,8 @@ details > summary:hover { color: var(--navy); }
   .section.page { padding-top: 28px; }
 
   .category { padding: 20px 18px; }
+  .semesters { grid-template-columns: 1fr; }
+  .semesters > div + div { border-left: 0; border-top: 1px solid var(--line); }
   .photos { grid-template-columns: 1fr; }
 
   .recruit { padding: 20px; }
